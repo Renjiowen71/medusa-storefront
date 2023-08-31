@@ -34,7 +34,13 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           {product.collection.title}
         </Link>
       )}
-      <h3 className="text-xl-regular">{product.store!=null?product.store.name:"Garage Sale Products"}</h3>
+      <Link
+        href={`${product.store!=null?"/stores/"+product.store.id:"/store"}`}
+        legacyBehavior
+      >      
+        <h3 className="text-xl-regular">{product.store!=null?product.store.name:"Garage Sale Products"}</h3>
+
+      </Link>
       <h3 className="text-xl-regular">{product.title}</h3>
 
       <p className="text-base-regular">{product.description}</p>

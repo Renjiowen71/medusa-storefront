@@ -67,3 +67,8 @@ export type InfiniteProductPage = {
     count: number
   }
 }
+
+export type Store = {
+  id: string;
+  name: string;
+};
