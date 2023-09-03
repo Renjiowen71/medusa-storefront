@@ -22,10 +22,6 @@ const CheckoutForm = () => {
         <div>
           <Shipping cart={cart} />
         </div>
-
-        <div>
-          <Payment />
-        </div>
       </div>
     </div>
   )

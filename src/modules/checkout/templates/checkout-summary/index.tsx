@@ -19,10 +19,6 @@ const CheckoutSummary = () => {
         <CartTotals cart={cart} />
         <PaymentButton paymentSession={cart?.payment_session} />
       </div>
-      <div className="p-6 bg-white">
-        <DiscountCode cart={cart} />
-      </div>
-      <GiftCard cart={cart} />
     </div>
   )
 }
