@@ -5,25 +5,31 @@ import { ProductPreviewType } from "types/global"
 import { useProducts } from "medusa-react"
 import { useCart } from "medusa-react"
 import transformProductPreview from "@lib/util/transform-product-preview"
+import { Region } from "@medusajs/medusa"
 
 
 type StoreProductsProps = {
   productsORs: PricedProduct[]
 }
 
+
 const StoreProducts = ( {productsORs} : StoreProductsProps) => {
-  const { cart } = useCart()
+  const { cart} = useCart()
   const productPreviewTypes: ProductPreviewType[] = []
   productsORs.forEach(productOR => {
     const { products, isLoading } = useProducts({
       id: productOR.id, 
       cart_id: cart?.id, 
-      region_id: cart?.region.id
+      region_id: cart?.region?.id
     })
     const product = products?.[0];
     if(product?.id&&cart){
-      const productPreviewType: ProductPreviewType = transformProductPreview(product, cart.region);
-      productPreviewTypes.push(productPreviewType);
+      try{
+        const productPreviewType: ProductPreviewType = transformProductPreview(product, cart.region);
+        productPreviewTypes.push(productPreviewType);
+      } catch(e){
+        console.log(e)
+      }
     }
   })
   return (

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="style.css"/>
+    <title>map</title>
+</head>
+
+
+<body>
+    <div id="map" onclick="closePage()"></div>
+    <div class="openPage" onclick="openPage()">Go To Our Stores</button></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="scripts.js"></script>
+
+    <div id="medusa" style="background-color:white; width:80%; height: 100%;"class="leaflet-top leaflet-right">
+        <div class=" leaflet-bar leaflet-control" style=" width:100%; height: 100%;">
+            <iframe id="myIframe" src="http://localhost:8000/landing" style="background-color:white;width: 100%; height: 100%; border: none;"> </iframe>
+        </div>
+    </div>
+</body>
+</html>
