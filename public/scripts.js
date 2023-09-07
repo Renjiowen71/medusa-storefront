@@ -30,8 +30,17 @@ function showPosition(position) {
 
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
-
-    L.marker(e.latlng).addTo(map)
+    let customIcon = {
+        iconUrl:"http://localhost:8000/favicon.ico",
+        iconSize:[40,40]
+       }
+    let myIcon = L.icon(customIcon);
+    let iconOptions = {
+        title:"Your Location",
+        draggable:true,
+        icon:myIcon
+    }
+    L.marker(e.latlng,iconOptions).addTo(map)
         .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
     L.circle(e.latlng, radius).addTo(map);
@@ -61,7 +70,6 @@ window.onmessage = function(e) {
                     "id":s.id,
                     "lat": s.latitudes,
                     "long": s.longitudes,
-                    "src":"marker-icon-211x.png",
                     "title":s.name,
                     "url":"http://localhost:8000/stores/"+s.id
                 }
