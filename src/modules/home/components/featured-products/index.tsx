@@ -5,8 +5,13 @@ import UnderlineLink from "@modules/common/components/underline-link"
 import ProductPreview from "@modules/products/components/product-preview"
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
 
-const FeaturedProducts = () => {
+const FeaturedProducts = (message: any) => {
   const { data } = useFeaturedProductsQuery()
+  try{
+    globalThis.top?.postMessage(message.message)
+  } catch(e){
+    console.log(e)
+  }
 
   return (
     <div className="py-12">

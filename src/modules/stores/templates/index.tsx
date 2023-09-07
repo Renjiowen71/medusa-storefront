@@ -13,7 +13,14 @@ type StoreTemplateProps = {
 
 
 const StoreTemplate: React.FC<StoreTemplateProps> = ({ store, products }) => {
-  window.top?.postMessage(store.id)
+  
+  let message = {
+    "page": "stores",
+    "data": store
+  };
+  try{
+    globalThis.top?.postMessage(message)
+  } catch(e){}
 
   const info = useRef<HTMLDivElement>(null)
 
