@@ -28,7 +28,6 @@ const StoreProducts = ( {productsORs} : StoreProductsProps) => {
         const productPreviewType: ProductPreviewType = transformProductPreview(product, cart.region);
         productPreviewTypes.push(productPreviewType);
       } catch(e){
-        console.log(e)
       }
     }
   })

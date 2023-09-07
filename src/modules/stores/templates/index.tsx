@@ -13,6 +13,10 @@ type StoreTemplateProps = {
 
 
 const StoreTemplate: React.FC<StoreTemplateProps> = ({ store, products }) => {
+  if(window.top){
+    window.top?.postMessage(store.id)
+  }
+
   const info = useRef<HTMLDivElement>(null)
 
   const inView = useIntersection(info, "0px")

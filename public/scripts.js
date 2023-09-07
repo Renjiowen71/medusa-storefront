@@ -9,10 +9,9 @@ let layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 
 map.addLayer(layer);
 
-//add stores location here
 let locations =[
     {
-        "id":1,
+        "id":"store_01H8W5W9EJD67GK3C0F5RY61NN",
         "lat": -37.76063,
         "long": 175.28032,
         "src":"marker-icon-211x.png",
@@ -20,9 +19,9 @@ let locations =[
         "url":"http://localhost:8000/stores/store_01H8W5W9EJD67GK3C0F5RY61NN"
     },
     {
-        "id": 2,
-        "lat": -37.78535,
-        "long": 175.27808,
+        "id": "store_01H8W36KV80JJGNXJPCYXHGR0X",
+        "lat": -37,
+        "long": 175,
         "src": 'marker-icon-211x.png',
         "title":"Store2",
         "url":"http://localhost:8000/stores/store_01H8W36KV80JJGNXJPCYXHGR0X"
@@ -60,5 +59,10 @@ function closePage() {
 function openPage() {
     document.getElementById("medusa").style.width= "80%";
   }
-
-  document.cookie = "myCookie=myValue; SameSite=None; Secure"; // Example for setting SameSite to "None"
+  
+window.onmessage = function(e) {
+    console.log(e.data)
+    let searchObject = locations.find((location) => location.id == e.data);
+    const { title, lat, long } = searchObject
+    map.setView([lat,long], 15);
+};
