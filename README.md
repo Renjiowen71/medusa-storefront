@@ -11,7 +11,12 @@ then create .env.local using the .env.template
 
 copy the files in here to the medusa-store file 
 
-run the frontend using 
+run the frontend for dev using 
 ```shell
 npm run dev
 ```
+and for deployment using 
+```shell
+npm run start
+```
+
