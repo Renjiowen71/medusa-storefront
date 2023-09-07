@@ -24,8 +24,10 @@ map.locate({setView: true, focus: 20});
 let locations =[]
 
 function showPosition(position) {
-    document.getElementById("frmLat").value = position.coords.latitude;
-    document.getElementById("frmLon").value = position.coords.longitude;            
+    try{
+        document.getElementById("frmLat").value = position.coords.latitude;
+        document.getElementById("frmLon").value = position.coords.longitude;            
+    } catch(e){}
 }
 
 function onLocationFound(e) {
@@ -40,8 +42,9 @@ function onLocationFound(e) {
         draggable:true,
         icon:myIcon
     }
-    L.marker(e.latlng,iconOptions).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+    L.marker(e.latlng,iconOptions).addTo(map).on("mouseover",event =>{
+        event.target.bindPopup("You are within " + radius + " meters from this point").openPopup();
+    })
 
     L.circle(e.latlng, radius).addTo(map);
 }
@@ -85,10 +88,6 @@ window.onmessage = function(e) {
                     event.target.bindPopup(Element.title).openPopup();
                 
                 })
-                .on("mouseover",event =>{
-                    event.target.closepopup();
-                })    
-                //jump to url
                 .on("click",() =>{
                     //window.open(Element.url,);
                     var iframe = document.getElementById("myIframe");
