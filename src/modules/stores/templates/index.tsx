@@ -13,9 +13,7 @@ type StoreTemplateProps = {
 
 
 const StoreTemplate: React.FC<StoreTemplateProps> = ({ store, products }) => {
-  if(window.top){
-    window.top?.postMessage(store.id)
-  }
+  window.top?.postMessage(store.id)
 
   const info = useRef<HTMLDivElement>(null)
 
