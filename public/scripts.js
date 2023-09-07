@@ -9,7 +9,37 @@ let layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 
 map.addLayer(layer);
 
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+} else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+}
+
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+
+map.locate({setView: true, focus: 20});
+
 let locations =[]
+
+function showPosition(position) {
+    document.getElementById("frmLat").value = position.coords.latitude;
+    document.getElementById("frmLon").value = position.coords.longitude;            
+}
+
+function onLocationFound(e) {
+    var radius = e.accuracy / 2;
+
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
 
 function closePage() {
   document.getElementById("medusa").style.width= "0";
