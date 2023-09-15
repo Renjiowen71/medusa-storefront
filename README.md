@@ -19,4 +19,18 @@ and for deployment using
 ```shell
 npm run start
 ```
+## Enable elasticsearch
+1. store.config.json, set "search":true
+{
+  "features": {
+    "search": true,
+    "productModule": false
+  }
+}
+
+2. configure in .env.local:
+NEXT_PUBLIC_SEARCH_ENDPOINT=http://xxxx
+NEXT_PUBLIC_SEARCH_USERNAME=xxxx
+NEXT_PUBLIC_SEARCH_PASSWORD=xxxx
+
 
