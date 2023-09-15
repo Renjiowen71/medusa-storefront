@@ -29,11 +29,16 @@
 import Searchkit, { SearchkitConfig } from 'searchkit'
 import createClient from '@searchkit/instantsearch-client'
 import { InstantSearch, SearchBox, Hits, RefinementList, Pagination, RangeInput } from 'react-instantsearch-hooks-web'
-
+  const searchEndpoint = process.env.NEXT_PUBLIC_SEARCH_ENDPOINT || "http://localhost:9200"
+  const searchUsername = process.env.NEXT_PUBLIC_SEARCH_USERNAME
+  const searchPassword = process.env.NEXT_PUBLIC_SEARCH_PASSWORD
   const config: SearchkitConfig = {
       connection: {
-        host: 'http://localhost:9200',
-        /* //apiKey: 'a2Rha1VJTUJMcGU4ajA3Tm9fZ0Y6MjAzX2pLbURTXy1hNm9SUGZGRlhJdw==' */
+        host: searchEndpoint,
+        auth: {
+          username: searchUsername,
+          password: searchPassword
+        }
       },
       search_settings: {
         search_attributes: ['title','description'],
