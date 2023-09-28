@@ -19,6 +19,8 @@ and for deployment using
 ```shell
 npm run start
 ```
+
+branch location-home does not include search
 ## Enable elasticsearch
 1. store.config.json, set "search":true
 {
